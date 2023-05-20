@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-// import ImageSearchIcon from '@mui/icons-material/ImageSearch';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import { GalleryContext } from 'components/App';
 
-export default function Searchbar({handleSearch}) {
+export default function Searchbar() {
     const [search, setSearch] = useState('');
-
+    const {handleSearch} = useContext(GalleryContext);
+   
     const handleChange = (evt) => setSearch(evt.target.value.toLowerCase());   
 
     const handleSubmit = (evt) => {
@@ -28,8 +29,6 @@ export default function Searchbar({handleSearch}) {
                     type="submit"
                     variant="contained">
                     <ManageSearchIcon />
-                    {/* <ImageSearchIcon /> */}
-                    {/* Find */}
                 </Button>
             </Stack>
         </form>

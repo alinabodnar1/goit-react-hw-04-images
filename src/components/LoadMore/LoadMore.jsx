@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{ useContext }  from 'react';
 import Button from '@mui/material/Button';
 import cssModule from './LoadMore.module.css';
-import PropTypes from 'prop-types';
+import { GalleryContext } from 'components/App';
 
-export default function LoadMore ({onClick}) {
+export default function LoadMore() {
+    const { onClick } = useContext(GalleryContext);
         return (
             <div className={cssModule.container}>
                  <Button 
@@ -17,6 +18,3 @@ export default function LoadMore ({onClick}) {
         )
     }
 
-LoadMore.propTypes = {
-    loadMore: PropTypes.func,
-}
