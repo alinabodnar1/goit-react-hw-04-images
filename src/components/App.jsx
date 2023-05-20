@@ -20,17 +20,19 @@ export default function App() {
   }
   
   useEffect(() => {
+    if (!searchText) {
+      return;
+    }
     setIsLoading(true);
     getPictures(searchText, page).then((data) => {
-      // console.log('data.total:', data.total);
+      console.log('data.total:', data.total);
       if (data.total === 0) {
         toast.error("Sorry, there are no images matching your search query. Please try again.");
         return;
       }
       if (data.hits) {
-        // console.log('data.hits:', data.hits);
+        console.log('data.hits:', data.hits);
         setPictures(prevPictures => [...prevPictures, ...data.hits]);
-        setPage(prevPage => prevPage + 1);
       }
     })
       .catch(() => {
@@ -39,54 +41,9 @@ export default function App() {
       .finally(() => {
         setIsLoading(false);
       });
-  
-}, [page, searchText, isLoading]);
-  
-  // const loadPictures = () => {
-   
-  // }
 
-  //  componentDidUpdate(_, prevState) {
-  //       const search = this.state.searchText.trim();
-  //       if (prevState.searchText !== search || prevState.page !== this.state.page) {
-  //           this.loadPictures();
-  //       } 
-  //  }
-  // loadPictures = () => {
-  //       const search = this.state.searchText.trim();
-  //       const { page } = this.state;
-  //       this.setState({ isLoading: true });
+}, [page, searchText]);
 
-  //       getPictures(search, page)
-  //           .then((data) => {
-  //               if (data.total === 0) {
-  //                   toast.error("Sorry, there are no images matching your search query. Please try again.");
-  //                   return;
-  //               }
-
-  //               if (data.hits) {
-  //                   this.setState(prevState => ({
-  //                       pictures: [...prevState.pictures, ...data.hits]
-  //                   }));
-  //               }
-  //           })
-  //           .catch(() => {
-  //               toast.error("An error occurred while responding from the backend.")
-  //           })
-  //           .finally(() => {
-  //               this.setState({
-  //                   isLoading: false
-  //               });
-  //              })
-	// 	}
-
-    // loadMore = () => {
-    //     this.setState((prevState) => {
-    //         return {
-    //             page: prevState.page + 1
-    //         };
-    //     });
-    // };
     const loadMore = () => {
         setPage(prevPage => prevPage + 1);     
     }
