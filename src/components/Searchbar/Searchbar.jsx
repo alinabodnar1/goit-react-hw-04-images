@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 // import ImageSearchIcon from '@mui/icons-material/ImageSearch';
-// import ManageSearchIcon from '@mui/icons-material/ManageSearch';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 export default function Searchbar({handleSearch}) {
     const [search, setSearch] = useState('');
@@ -27,9 +27,9 @@ export default function Searchbar({handleSearch}) {
                 <Button
                     type="submit"
                     variant="contained">
-                    {/* <ManageSearchIcon /> */}
+                    <ManageSearchIcon />
                     {/* <ImageSearchIcon /> */}
-                    Find
+                    {/* Find */}
                 </Button>
             </Stack>
         </form>
